@@ -9,11 +9,9 @@ public class SpringMain {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring/spring-app.xml");
-
-        System.out.println("Bean definition names: " + Arrays.toString(ctx.getBeanDefinitionNames()));
-
-        ctx.close();
+        try (ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
+            System.out.println("Bean definition names: " + Arrays.toString(ctx.getBeanDefinitionNames()));
+        }
 
     }
 
